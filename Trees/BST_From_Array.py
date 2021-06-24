@@ -23,7 +23,7 @@ def list_ints(): return list(map(int, sys.stdin.readline().strip().split()))
 def list_strs(): return list(map(str, sys.stdin.readline().strip().split()))
 def list_floats(): return list(map(float, sys.stdin.readline().strip().split()))
 # -------------------------------------------------------------------------------------
-# Creation Of Complete Binary Tree From An Array
+# Creation Of Binary Search Tree From An Array
 
 
 class Node:
@@ -33,24 +33,30 @@ class Node:
         self.right = None
 
 
-class CBT:
+class BST:
     def __init__(self, n, l):
         self.n = n
         self.l = l
-        self.l.insert(0, 0)
 
     def createTree(self):
-        root = Node(self.l[1])
-        q = [root]
-        x = self.n//2
-        for i in range(1, x+1):
-            temp = q.pop(0)
-            if(2*i <= self.n):
-                temp.left = Node(self.l[2*i])
-                q.append(temp.left)
-            if(2*i+1 <= self.n):
-                temp.right = Node(self.l[2*i+1])
-                q.append(temp.right)
+        root = None
+        for i in self.l:
+            node = Node(i)
+            if(root == None):
+                root = node
+            else:
+                temp = root
+                prev = None
+                while(temp != None):
+                    prev = temp
+                    if(i < temp.data):
+                        temp = temp.left
+                    else:
+                        temp = temp.right
+                if(i < prev.data):
+                    prev.left = node
+                else:
+                    prev.right = node
         return root
 
     def inorder(self, root):
@@ -67,7 +73,7 @@ n = get_int()
 l = list_ints()
 
 # Creating Tree from the given array
-obj = CBT(n, l)
+obj = BST(n, l)
 root = obj.createTree()
 
 # Verifying tree by inorder traversal
@@ -75,10 +81,10 @@ obj.inorder(root)
 
 '''
 Sample Input:
-3
-2 1 3
+4
+2 1 3 4
 
 Sample Output:
-1 2 3
+1 2 3 4
 
 '''
