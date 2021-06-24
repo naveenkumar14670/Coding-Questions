@@ -154,3 +154,12 @@ root = tree.delete(root, 5)
 print('Tree after Deletion:', end=' ')
 tree.preOrder(root)
 print()
+
+'''
+    Sample Input:
+        3 1 5 4 2
+    Sample Output:
+        Initial Tree: 4 2 1 3 5 
+        Tree after Deletion: 2 1 4 3 
+
+'''

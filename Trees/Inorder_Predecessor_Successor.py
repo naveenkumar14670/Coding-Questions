@@ -84,3 +84,14 @@ print()
 
 print('Inorder Predecessor:', find_Inorder_Predecessor(root, -1, k))
 print('Inorder Successor:', find_Inorder_Successor(root, -1, k))
+
+'''
+    Sample Input:
+        7
+        50 30 70 20 40 60 80
+        65
+    Sample Output:
+        Tree: 20 30 40 50 60 70 80 
+        Inorder Predecessor: 60
+        Inorder Successor: 70
+'''
